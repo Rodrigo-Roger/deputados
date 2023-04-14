@@ -1,0 +1,24 @@
+1-instalar o Git
+2-instalar o Node v-lts
+
+//Criar projeto
+npx create-next-app@latest filmes --use-npm --example https://github.com/vercel/next-learn/tree/master/basics/learn-starter
+=> entrar na raiz e seguir o resto
+
+npm i axios
+{Criar uma pasta chamada {services => apiNome.js}}
+npm install react-bootstrap bootstrap
+
+//Executar o projeto ou startar o server
+npm run dev
+
+//criar uma pasta components na raiz do projeto (minusculo)
+1- Todos os arquivos dentro dessa pasta deve está em maiusculo
+
+////{carros.map(item => (
+            <p>{item}</p>
+        ))}
+
+//useEffect(()=>{
+        
+    }, [])  função que fica esperando acontecer tudo para ser execultado
