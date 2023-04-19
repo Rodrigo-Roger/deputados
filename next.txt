@@ -1,8 +1,13 @@
 1-instalar o Git
 2-instalar o Node v-lts
 
+//
+git config --global user.name "Rodrigo-Roger"
+git config --global user.email "rodrigoroger002@gmail.com"
+
 //Criar projeto
 npx create-next-app@latest filmes --use-npm --example https://github.com/vercel/next-learn/tree/master/basics/learn-starter
+
 => entrar na raiz e seguir o resto
 
 npm i axios
@@ -15,7 +20,8 @@ npm run dev
 //criar uma pasta components na raiz do projeto (minusculo)
 1- Todos os arquivos dentro dessa pasta deve está em maiusculo
 
-////{carros.map(item => (
+////
+{carros.map(item => (
             <p>{item}</p>
         ))}
 
