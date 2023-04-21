@@ -1,25 +1,26 @@
-import React from 'react'
-import Cabecalho from './Cabecalho'
-import Rodape from './Rodape'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react'
 import { Container } from 'react-bootstrap';
+import Cabecalho from './cabecalho';
+
 
 const Pagina = (props) => {
 
-    console.log(props.titulo)
     return (
         <>
-            <Cabecalho />
-            <div className='bg-secondary text-align py-3 mb-3 text-center text-white'>
-                <h1> {props.titulo} </h1>
+            <Cabecalho/>
+            <div className='bg-secondary py-3 text-white text-center mb-3'>
+                <Container>
+                    <h1>{props.titulo}</h1>
+                </Container>
             </div>
 
             <Container>
-                  {props.children}
+                {props.children}
             </Container>
-          
-
-            <Rodape />
+            <div style={{ width: '100%' }} className='bg-secondary py-3 text-white text-center position-fixed bottom-0'>
+                <div>Reservados os direitos®</div>
+            </div>
         </>
     )
 }

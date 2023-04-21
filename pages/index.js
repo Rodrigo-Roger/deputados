@@ -1,11 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { Accordion, Carousel } from 'react-bootstrap'
-import Pagina from '../components/pagina'
+import { Accordion, Button, Card, Carousel, Col, Row } from 'react-bootstrap'
 import apiDeputados from '../services/apiDeputados'
+import Pagina from '../components/pagina'
+import Link from 'next/link'
 
-const hooks = () => {
+const deputados = () => {
 
     const [deputados, setDeputados] = useState([])  
 
@@ -61,25 +62,84 @@ const hooks = () => {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-     <Accordion defaultActiveKey="0">
+
+   
+
+
+     <Accordion eventKey="0" className='mb-3 mt-3'>
     <Accordion.Item eventKey="0">
       <Accordion.Header>Deputados</Accordion.Header>
       <Accordion.Body>
+
+      <Row md={5} >
       {deputados.map(item => (
-        <div>
-        <p>{item.nome}</p>
+        
+        <Col >
+        <Card  className='mb-3 text-center' style={{ width: '200px' }}>
+        <div >
+      <Card.Img src={item.urlFoto} style={{width:'150px',}} />
+      <Card.Body>
+        <Card.Title><p>{item.nome}</p></Card.Title>
+        <Card.Text>
         <p>{item.partido}</p>
-        <img src={item.urlFoto} style={{width:'200px'}}/>
+        </Card.Text>
+        
+      </Card.Body>
         </div>
-       
-       
+    </Card>
+        
+        
+        </Col>
+            
     ))}
+    </Row>
+           
       </Accordion.Body>
     </Accordion.Item>
     </Accordion>
+
+    
+
+    <Accordion eventKey="0">
+    <Accordion.Item eventKey="0">
+      <Accordion.Header>Partidos</Accordion.Header>
+      <Accordion.Body>
+
+      <Row md={5} >
+      {deputados.map(item => (
+        
+        <Col >
+        <Card  className='mb-3 text-center' style={{ width: '200px' }}>
+        <div >
+      <Card.Img  style={{width:'150px',}} />
+      <Card.Body>
+        <Card.Title><p>- {item.siglaPartido}</p></Card.Title>
+        <Card.Text>
+        <p></p>
+        </Card.Text>
+        <Link href={'/'+item.id}className='btn btn-danger'>Detalhes</Link>
+      </Card.Body>
+        </div>
+    </Card>
+        
+        
+        </Col>
+            
+    ))}
+    </Row>
+           
+      </Accordion.Body>
+    </Accordion.Item>
+    </Accordion>
+
 
    </Pagina>
   </>)
 }
 
-export default hooks
+export default deputados
+
+
+
+  
+
