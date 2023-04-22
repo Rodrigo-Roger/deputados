@@ -66,7 +66,7 @@ const deputados = () => {
    
 
 
-     <Accordion eventKey="0" className='mb-3 mt-3'>
+     <Accordion eventKey="1" className='mb-3 mt-3'>
     <Accordion.Item eventKey="0">
       <Accordion.Header>Deputados</Accordion.Header>
       <Accordion.Body>
@@ -79,18 +79,16 @@ const deputados = () => {
         <div >
       <Card.Img src={item.urlFoto} style={{width:'150px',}} />
       <Card.Body>
-        <Card.Title><p>{item.nome}</p></Card.Title>
+        <Card.Title style={{fontSize: '15px'}}><p>{item.nome} - {item.siglaPartido}</p></Card.Title>
         <Card.Text>
-        <p>{item.partido}</p>
+        <p></p>
+        <p>UF???: {item.siglaUf} - {item.uriPartido}</p>
         </Card.Text>
-        
+        <Link href={'/deputados'+item.id}className='btn btn-danger'>Detalhes</Link>
       </Card.Body>
         </div>
-    </Card>
-        
-        
-        </Col>
-            
+    </Card>   
+        </Col>        
     ))}
     </Row>
            
@@ -100,46 +98,20 @@ const deputados = () => {
 
     
 
-    <Accordion eventKey="0">
-    <Accordion.Item eventKey="0">
-      <Accordion.Header>Partidos</Accordion.Header>
-      <Accordion.Body>
-
-      <Row md={5} >
-      {deputados.map(item => (
-        
-        <Col >
-        <Card  className='mb-3 text-center' style={{ width: '200px' }}>
-        <div >
-      <Card.Img  style={{width:'150px',}} />
-      <Card.Body>
-        <Card.Title><p>- {item.siglaPartido}</p></Card.Title>
-        <Card.Text>
-        <p></p>
-        </Card.Text>
-        <Link href={'/'+item.id}className='btn btn-danger'>Detalhes</Link>
-      </Card.Body>
-        </div>
-    </Card>
-        
-        
-        </Col>
-            
-    ))}
-    </Row>
-           
-      </Accordion.Body>
-    </Accordion.Item>
-    </Accordion>
-
-
+    
    </Pagina>
   </>)
 }
 
 export default deputados
 
-
+export async function getServerSideProps(context){
+  const resultado = await apiDeputados.get("/deputados")
+  const deputados = resultado.data.dados
+  return{
+    props:{deputados},
+  }
+}
 
   
 
